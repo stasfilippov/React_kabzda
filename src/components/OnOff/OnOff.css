@@ -1,0 +1,23 @@
+.button {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    border: 1px black solid;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.lightbulb {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px black solid;
+}

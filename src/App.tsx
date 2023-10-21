@@ -2,14 +2,13 @@ import React from 'react';
 import './App.css';
 import {Accordion} from "./components/Accordion/Accordion";
 import {Rating} from "./components/Rating/Rating";
+import { OnOff } from './components/OnOff/OnOff';
 
 
 function App() {
 	console.log('App rendering')
-	// делает что-то полезное
-	// в конце обязательно возвращает JSX
 	return (
-		<div>
+		<div className='App'>
 			<PageTitle title={"This is app component"}/>
 			<PageTitle title={"My friend"}/>
 			<h3>Article 1</h3>
@@ -22,6 +21,8 @@ function App() {
 			<Rating value={3}/>
 			<Rating value={4}/>
 			<Rating value={5}/>
+			<OnOff isOn ={true}/>
+			<OnOff isOn ={false}/>
 		</div>
 	);
 }
