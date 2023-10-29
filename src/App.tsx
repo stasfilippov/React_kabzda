@@ -13,8 +13,9 @@ function App() {
 		<div className='App'>
 			<UncontrolledAccordion titleValue={'--Uncontrolled accordion--'}/>
 			<Accordion titleValue={'--Controlled accordion--'} collapsed={false}/>
+
 			<OnOff/>
-			<OnOff/>
+
 			<Rating value={4}/>
 			<UncontrolledRating/>
 		</div>

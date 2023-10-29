@@ -8,37 +8,38 @@ export function UncontrolledRating() {
 	let [selected, setSelected] = useState(0)
 
 
-	const clickHandler = (event: MouseEvent) => {
-		const value = event.currentTarget.getAttribute('data-value')
-
-		setSelected(Number(value))
+	const clickHandler = (num: number) => {
+		setSelected(num)
 	}
-
 
 
 	return (
 		<div>
-			<Star selected={selected > 0}/><button onClick={clickHandler} data-value={1}>1</button>
-			<Star selected={selected > 1}/><button onClick={clickHandler} data-value={2}>2</button>
-			<Star selected={selected > 2}/><button onClick={clickHandler} data-value={3}>3</button>
-			<Star selected={selected > 3}/><button onClick={clickHandler} data-value={4}>4</button>
-			<Star selected={selected > 4}/><button onClick={clickHandler} data-value={5}>5</button>
+			<Star clickHandler={clickHandler} selected={selected > 0} id={1}/>
+			<Star clickHandler={clickHandler} selected={selected > 1} id={2}/>
+			<Star clickHandler={clickHandler} selected={selected > 2} id={3}/>
+			<Star clickHandler={clickHandler} selected={selected > 3} id={4}/>
+			<Star clickHandler={clickHandler} selected={selected > 4} id={5}/>
 		</div>
 	)
 
 }
 
 type StarPropsType = {
-	selected: boolean;
+	clickHandler: (num: number) => void,
+	selected: boolean,
+	id: number
 }
 
 function Star(props: StarPropsType) {
 	console.log('Star rendering');
-	if (props.selected === true) {
-		return (
-			<span><b>star</b> </span>
-		)
-	} else {
-		return <span>star </span>
+
+	const onClickSpanHandler = () => {
+		props.clickHandler(props.id)
 	}
+
+	return (props.selected === true)
+		? <span onClick={onClickSpanHandler}><b>star</b></span>
+		: <span onClick={onClickSpanHandler}>star </span>
+
 }
