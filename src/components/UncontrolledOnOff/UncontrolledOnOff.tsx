@@ -1,15 +1,13 @@
+import {useState} from 'react';
 
-type OnOffPropsType = {
-    isOn: boolean
-    isOnFn: (value: boolean) => void
-}
-
-export const OnOff = (props:OnOffPropsType) => {
+export const UncontrolledOnOff = () => {
     console.log('OnOff rendering')
+    let [isOn, setIsOn] = useState(false);
+
 
     const onStyle = {
         display: 'inline-block',
-        backgroundColor: props.isOn ? 'green' : 'white',
+        backgroundColor: isOn ? 'green' : 'white',
         width: '50px',
         height: '20px',
         borderRadius: '5px',
@@ -20,7 +18,7 @@ export const OnOff = (props:OnOffPropsType) => {
 
     const offStyle = {
         display: 'inline-block',
-        backgroundColor: props.isOn ? 'white' : 'red',
+        backgroundColor: isOn ? 'white' : 'red',
         width: '50px',
         height: '20px',
         borderRadius: '5px',
@@ -35,14 +33,14 @@ export const OnOff = (props:OnOffPropsType) => {
         height: "10px",
         borderRadius: '50%',
         border: '1px black solid',
-        backgroundColor: props.isOn ? 'green' : 'red',
+        backgroundColor: isOn ? 'green' : 'red',
     }
 
     return (
         <div>
-            <span>This controlled: </span>
-            <div onClick={() => props.isOnFn(true)} style={onStyle} >On</div>
-            <div onClick={() => props.isOnFn(false)} style={offStyle} >Off</div>
+            <span>This uncontrolled: </span>
+            <div style={onStyle} onClick={ () => {setIsOn(true)} }>On</div>
+            <div style={offStyle} onClick={ () => { setIsOn(false) } }>Off</div>
             <div style={lightbulbStyle}></div>
         </div>
     )
