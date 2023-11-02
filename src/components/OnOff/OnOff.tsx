@@ -1,7 +1,7 @@
 
 type OnOffPropsType = {
     isOn: boolean
-    isOnFn: (value: boolean) => void
+    isOnChange: (value: boolean) => void
 }
 
 export const OnOff = (props:OnOffPropsType) => {
@@ -41,8 +41,8 @@ export const OnOff = (props:OnOffPropsType) => {
     return (
         <div>
             <span>This controlled: </span>
-            <div onClick={() => props.isOnFn(true)} style={onStyle} >On</div>
-            <div onClick={() => props.isOnFn(false)} style={offStyle} >Off</div>
+            <div onClick={() => props.isOnChange(true)} style={onStyle} >On</div>
+            <div onClick={() => props.isOnChange(false)} style={offStyle} >Off</div>
             <div style={lightbulbStyle}></div>
         </div>
     )
