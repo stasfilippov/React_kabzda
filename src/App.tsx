@@ -25,6 +25,13 @@ function App() {
     <div className="App">
       <UncontrolledAccordion titleValue={"--Uncontrolled accordion--"} />
       <Accordion
+        items={[
+          { title: "Dima", value: 1 },
+          { title: "Valera", value: 2 },
+          { title: "Artem", value: 3 },
+          { title: "Victor", value: 4 },
+        ]}
+        onClick={() => {}}
         titleValue={"--Controlled accordion--"}
         onChange={changeCollapsed}
         collapsed={collapsedValue}
