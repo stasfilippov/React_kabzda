@@ -9,31 +9,36 @@ type ItemType = {
 };
 
 type SelectType = {
-  value: string;
-  onChange: (value: string) => void;
+  value: string | null;
+  onChange: (value: any) => void;
   items: ItemType[];
 };
 export const Select = (props: SelectType) => {
   const [collapsed, setCollapsed] = useState(false);
+  const [hoveredElementValue, setHoveredElementValue] = useState(props.value);
 
-  // const defaultValue = props.items.find((el) => el.value === props.value);
+  const defaultValue = props.items.find((el) => el.value === props.value);
+  const hoveredItem = props.items.find(
+    (el) => el.value === hoveredElementValue
+  );
 
-  const onClickHandler = (nextTitle: string) => {
+  const toggleItems = () => setCollapsed(!collapsed);
+  const onClickHandler = (nextTitle: any) => {
     if (props.value !== nextTitle) {
       props.onChange(nextTitle);
     }
-    setCollapsed(!collapsed);
+    toggleItems();
   };
 
   return (
     <SelectWrapperStyled>
-      <SelectItemStyled onClick={() => setCollapsed(!collapsed)}>
-        {props.value}
+      <SelectItemStyled onClick={toggleItems}>
+        {defaultValue && defaultValue.title}
       </SelectItemStyled>
       {collapsed && (
         <ItemsWrapper>
           {props.items.map((i) => (
-            <ItemStyled key={i.value} onClick={() => onClickHandler(i.title)}>
+            <ItemStyled key={i.value} onClick={() => onClickHandler(i.value)}>
               {i.title}
             </ItemStyled>
           ))}
@@ -83,6 +88,7 @@ const ItemStyled = styled.div`
 
   &:hover {
     color: #e8707d;
+    background-color: #c2cad0;
     font-weight: bold;
     cursor: pointer;
   }

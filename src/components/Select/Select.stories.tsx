@@ -26,7 +26,7 @@ const itemsData = [
 ];
 
 export const CustomSelect = () => {
-  const [currentValue, setCurrentValue] = useState("");
+  const [currentValue, setCurrentValue] = useState(null);
 
   return (
     <Select value={currentValue} onChange={setCurrentValue} items={itemsData} />
