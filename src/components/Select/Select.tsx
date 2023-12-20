@@ -5,16 +5,18 @@ import change = Simulate.change;
 
 type ItemType = {
   title: string;
-  value: any;
+  value: string;
 };
 
 type SelectType = {
-  value: any;
-  onChange: (value: any) => void;
+  value: string;
+  onChange: (value: string) => void;
   items: ItemType[];
 };
 export const Select = (props: SelectType) => {
   const [collapsed, setCollapsed] = useState(false);
+
+  // const defaultValue = props.items.find((el) => el.value === props.value);
 
   const onClickHandler = (nextTitle: string) => {
     if (props.value !== nextTitle) {
@@ -28,7 +30,7 @@ export const Select = (props: SelectType) => {
       <SelectItemStyled onClick={() => setCollapsed(!collapsed)}>
         {props.value}
       </SelectItemStyled>
-      {collapsed ? (
+      {collapsed && (
         <ItemsWrapper>
           {props.items.map((i) => (
             <ItemStyled key={i.value} onClick={() => onClickHandler(i.title)}>
@@ -36,32 +38,38 @@ export const Select = (props: SelectType) => {
             </ItemStyled>
           ))}
         </ItemsWrapper>
-      ) : (
-        <></>
       )}
     </SelectWrapperStyled>
   );
 };
 
 const SelectWrapperStyled = styled.div`
-  margin: 20px auto;
-  background-color: lightgoldenrodyellow;
+  margin: 30px auto;
   position: relative;
+  height: 30px;
+  width: 150px;
 `;
 
 const SelectItemStyled = styled.div`
-  border: 1px solid cadetblue;
-  height: 30px;
+  border: 2px solid #c2cad0;
+  border-radius: 10px;
+  background-color: #e7717d;
+  color: white;
   font-weight: bold;
   font-size: 20px;
   cursor: pointer;
   display: flex;
+  justify-content: center;
   align-items: center;
+  height: 100%;
 `;
 
 const ItemsWrapper = styled.div`
   position: absolute;
-  background-color: darkgrey;
+  border: 2px solid #c2cad0;
+  background-color: white;
+  color: #e7717d;
+  border-radius: 10px;
   width: 100%;
   top: 0;
   left: 0;
@@ -69,9 +77,12 @@ const ItemsWrapper = styled.div`
 
 const ItemStyled = styled.div`
   font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
-    color: darkblue;
+    color: #e8707d;
     font-weight: bold;
     cursor: pointer;
   }
