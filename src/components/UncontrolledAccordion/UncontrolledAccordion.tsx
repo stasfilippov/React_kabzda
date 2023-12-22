@@ -1,28 +1,16 @@
 import { useReducer, useState } from "react";
-import { action } from "@storybook/addon-actions";
+import { reducer, TOGGLE_CONSTANT } from "./reducer";
 
 type AccordionPropsType = {
   titleValue: string;
 };
 
-type ActionType = {
-  type: string;
-};
-
-const reducer = (state: boolean, action: ActionType) => {
-  if (action.type === "TOGGLE-COLLAPSED") {
-    return !state;
-  }
-
-  return state;
-};
-
 export function UncontrolledAccordion(props: AccordionPropsType) {
   // const [collapsed, setCollapsed] = useState(false);
-  const [collapsed, dispatch] = useReducer(reducer, false);
+  const [state, dispatch] = useReducer(reducer, { collapsed: false });
 
   const onClickButtonHandler = () => {
-    dispatch({ type: "TOGGLE-COLLAPSED" });
+    dispatch({ type: TOGGLE_CONSTANT });
   };
 
   return (
@@ -31,7 +19,7 @@ export function UncontrolledAccordion(props: AccordionPropsType) {
         title={props.titleValue}
         clickHandler={onClickButtonHandler}
       />
-      {!collapsed && <AccordionBody />}
+      {!state.collapsed && <AccordionBody />}
     </div>
   );
 }
