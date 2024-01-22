@@ -56,12 +56,12 @@ export const ExampleSetTimeout = () => {
   }
 
   useEffect(() => {
-    setInterval(() => {
-      setSeconds(new Date().getSeconds());
-      if (seconds === 0) {
-        setMinutes(new Date().getMinutes());
-      }
-    }, 1000);
+    // setInterval(() => {
+    //   setSeconds(new Date().getSeconds());
+    //   if (seconds === 0) {
+    //     setMinutes(new Date().getMinutes());
+    //   }
+    // }, 1000);
   }, []);
 
   return (
