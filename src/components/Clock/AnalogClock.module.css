@@ -1,0 +1,99 @@
+*	{
+    margin: 0;
+    padding: 0;
+    font-size: 100%;}
+
+.clock_box {
+    width: 500px;
+    height: 500px;
+    box-sizing: border-box;
+    position: relative;
+    border: 2px solid #000;
+    border-radius: 50%;
+    margin: 50px 0 0 50px;}
+
+
+.arrow-helper {
+	width: 500px;
+	height: 2px;
+	background: #999;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform-origin: center;}
+
+.a1	{transform: rotate(0deg);}
+.a2	{transform: rotate(30deg);}
+.a3	{transform: rotate(60deg);}
+.a4	{transform: rotate(90deg);}
+.a5	{transform: rotate(120deg);}
+.a6	{transform: rotate(150deg);}
+
+
+.number {
+    width: 50px;
+    box-sizing: border-box;
+    position: absolute;
+    font: 32px/50px Arial, sans-serif;
+    text-align: center;
+    /* border: 2px solid #000; */
+}
+
+/* цифры */
+.n01 {left: 335px; top: 35px;}
+.n02 {left: 412px; top: 110px;}
+.n03 {left: 445px; top: 222px;}
+.n04 {left: 412px; top: 332px;}
+.n05 {left: 335px; top: 405px;}
+.n06 {left: 225px; top: 442px;}
+.n07 {left: 112px; top: 405px;}
+.n08 {left: 35px; top: 332px;}
+.n09 {left: 0px; top: 225px;}
+.n10 {left: 33px; top: 110px;}
+.n11 {left: 110px; top: 35px;}
+.n12 {left: 225px; top: 0;}
+
+/* стрелки */
+.clock_hands_box {
+    width: 6px;
+    height: 500px;
+    /*background: #fcc; */
+    position: absolute;
+    left: 247px;
+    top: 0;}
+
+.clock_hand__second {
+    width: 2px;
+    height: 260px;
+    position: absolute;
+    z-index: 3;
+    right: 2px;
+    top: 10px;
+    background: #fc0;
+    transform-origin: 50% 240px;
+    /* transform: rotate(15deg); */
+}
+
+.clock_hand__minute {
+    width: 4px;
+    height: 230px;
+    position: absolute;
+    z-index: 2;
+    right: 1px;
+    top: 40px;
+    background: #090;
+    transform-origin: 50% 210px;
+    /* transform: rotate(60deg); */
+}
+
+.clock_hand__hour {
+    width: 6px;
+    height: 200px;
+    position: absolute;
+    z-index: 1;
+    right: 0px;
+    top: 70px;
+    background: #f00;
+    transform-origin: 50% 180px;
+    /* transform: rotate(115deg); */
+}
