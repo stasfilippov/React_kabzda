@@ -73,3 +73,42 @@ export const ExampleSetTimeout = () => {
     </>
   );
 };
+
+export const ResetEffectExample = () => {
+  const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    console.log("Effect");
+
+    return () => {
+      console.log("reset effect");
+    };
+  }, []);
+
+  const increase = () => setCounter(counter + 1);
+
+  return (
+    <div>
+      <h3>Hello {counter}</h3>
+      <button onClick={increase}>+</button>
+    </div>
+  );
+};
+
+export const KeysTyped = () => {
+  const [text, setText] = useState("");
+
+  const handler = (e: KeyboardEvent) => {
+    console.log(e.key);
+    setText((state) => state + e.key);
+  };
+
+  useEffect(() => {
+    window.addEventListener("keypress", handler);
+    return () => {
+      window.removeEventListener("keypress", handler);
+    };
+  }, []);
+
+  return <div>{text}</div>;
+};
